@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ComisionesModule } from './comisiones/comisiones.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { SolicitudesModule } from './solicitudes/solicitudes.module';
+
 
 
 @NgModule({
@@ -13,9 +15,14 @@ import { HttpClient } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
-    HttpClient,
-    ComisionesModule
+    HttpClientModule,
+    SolicitudesModule
+
+  ],
+
+  exports:[
 
   ],
   providers: [],

@@ -5,16 +5,16 @@ const routes: Routes = [
 
 {
   path: '',
-  redirectTo: 'comisiones',
+  redirectTo: 'home',
   pathMatch:'full'
 },
 
 {
-  path: 'comisiones',
-  loadChildren:()=> import('./comisiones/comisiones.module').then(
-    (m) => m.ComisionesModule)
+  path: 'solicitudes',
+  loadChildren:()=> import('./solicitudes/solicitudes.module').then(
+    (m) => m.SolicitudesModule)
 },
-{ path: '**', redirectTo: 'comisiones', pathMatch: 'full' },
+{ path: '**', redirectTo: '/solicitudes', pathMatch: 'full' },
 
 
 ];
