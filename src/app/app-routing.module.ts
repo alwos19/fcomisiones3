@@ -5,7 +5,7 @@ const routes: Routes = [
 
 {
   path: '',
-  redirectTo: 'home',
+  redirectTo: 'solicitudes/solicitudes-tabla',
   pathMatch:'full'
 },
 

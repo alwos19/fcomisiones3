@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Comisiones } from '../../interfaces/comisiones/comision';
-// import { ComisionService} from '../../services/comisiones/comision.service'
+import { Comision } from '../../interfaces/comisiones/comisiones';
+import { Permiso } from '../../interfaces/permisos/permisos';
+import { ComisionesService} from '../../services/comisiones/comisiones.service'
+import { PermisosService } from "../../services/permisos/permisos.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +13,16 @@ import { Router } from '@angular/router';
 })
 export class SolicitudesTableComponent implements OnInit {
 
+  comisiones!: Comision[];
+  permisos!: Permiso[];
+
   // comisiones$: Observable<Comision[]>;
   // total$: Observable<number>
 
   constructor(
 
-    // public comisionService: ComisionService,
+    private comisionesService: ComisionesService,
+    private permisosService: PermisosService
     // // public searchSolicitudesService: SearchSolicitudesService,
     // public router: Router
   ){}
@@ -25,7 +31,16 @@ export class SolicitudesTableComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.comisiones = this.comisionService;
+
+    this.comisionesService.getComisiones().subscribe(
+      comisiones => this.comisiones = comisiones
+    );
+
+
+
+
+
+    this.permisos = this.permisosService.getPermisos();
   }
 
 }

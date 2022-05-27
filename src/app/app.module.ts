@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SolicitudesModule } from './solicitudes/solicitudes.module';
-
+import { ComisionesService } from './solicitudes/services/comisiones/comisiones.service';
+import { PermisosService } from './solicitudes/services/permisos/permisos.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { SolicitudesModule } from './solicitudes/solicitudes.module';
   exports:[
 
   ],
-  providers: [],
+  providers: [ ComisionesService, PermisosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

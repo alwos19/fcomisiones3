@@ -1,6 +1,6 @@
-export interface Comision {
+export interface Permiso {
   id: number;
-  fecha_inicio: Date;
+  solicitud: string;
   estado: string;
   facultad: string;
   departamento: string;
