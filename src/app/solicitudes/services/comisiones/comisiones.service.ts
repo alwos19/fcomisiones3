@@ -1,8 +1,9 @@
+import { Comision } from '../../interfaces/comisiones/comisiones';
+
 import { Injectable } from '@angular/core';
-import { COMISIONES } from '../../json/comisiones.json'
-import { Comision } from '../../interfaces/comisiones/comisiones'
 import { Observable, of, map } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,10 @@ export class ComisionesService {
     return this.http.get(this.urlEndPoint).pipe(
       map((response) => response as Comision[])
     ) }
+
+
 }
+
+
+
 

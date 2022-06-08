@@ -1,5 +1,5 @@
 
-<app-solicitudes-buscar class="small"></app-solicitudes-buscar>
+
 
 
 <div class="container shadow-sm pt-4 pl-4 pr-4 mb-5 bg-white rounded">
@@ -29,10 +29,11 @@
         <tr
          *ngFor="let comision of comisiones" class="click-table">
           <th scope="row">{{ comision.id }}</th>
-          <td>{{ comision.fecha_inicio }}</td>
-          <td>{{ comision.estado }}</td>
-          <td>{{ comision.facultad}}</td>
-          <td>{{ comision.departamento }}</td>
+          <td>
+            {{ comision.tipos_comision.nombre }}</td>
+          <td> {{ comision.intermediate_estados. }}</td>
+          <!-- <td>{{ comision.facultad}}</td> -->
+          <!-- <td>{{ comision.departamento }}</td> -->
          </tr>
       </tbody>
     </table>
