@@ -19,19 +19,21 @@
         </tr>
       </thead>
       <tbody>
+
         <tr *ngFor="let permiso of permisos" class="click-table">
-          <th scope="row">{{ permiso.id }}</th>
-          <td>{{ permiso.solicitud }}</td>
-          <td>{{ permiso.estado }}</td>
-          <td>{{ permiso.facultad}}</td>
-          <td>{{ permiso.departamento }}</td>
-         </tr>
-        <tr
-         *ngFor="let comision of comisiones" class="click-table">
+            <th scope="row">{{ permiso.id }}</th>
+            <td>{{ permiso.solicitud }}</td>
+            <td>{{ permiso.estado }}</td>
+            <td>{{ permiso.facultad}}</td>
+            <td>{{ permiso.departamento }}</td>
+        </tr>
+
+
+         <tr *ngFor="let comision of comisiones" class="click-table">
+
           <th scope="row">{{ comision.id }}</th>
-          <td>
-            {{ comision.tipos_comision.nombre }}</td>
-          <td> {{ comision.intermediate_estados. }}</td>
+          <td>{{ comision.tipos_comision.nombre }}</td>
+          <td> {{ comision.nombreEstadoActual }}</td>
           <!-- <td>{{ comision.facultad}}</td> -->
           <!-- <td>{{ comision.departamento }}</td> -->
          </tr>

@@ -1,4 +1,4 @@
-import { IntermediateEstados } from './comisionesxestados';
+
 
 export interface Comision {
   id:                      number;
@@ -16,38 +16,43 @@ export interface Comision {
   tipos_comision:          TiposComision;
   documentos:              any[];
   cumplidos:               any[];
-  usuarios:                Usuarios;
-  intermediate_estados: IntermediateEstados;
+  nombreEstadoActual: string;
 
-  };
+intermediate_comisiones: [
+  {
+    createdAt: Date;
+    fecha_actualizacion: Date;
+    intermediate_estados: {
+      nombre: string;
+    };
+  }
+]
 
 
-
-export interface IntermediateComisiones {
-  createdAt:            Date;
-  observacion:          string;
-
-  };
+};
 
 
+export interface intermediate_comisiones {
+  createdAt: Date;
+  fecha_actualizacion: Date;
+  intermediate_estados: {
+    nombre: string;}
+
+  }
+
+// interface IntermediateComisiones {
+//   nombre: string
+// }
+
+
+// intermediate_estados:    IntermediateEstados;
 
 
 export interface TiposComision {
   nombre: string;
 }
 
-export interface Usuarios {
-  id:             number;
-  nombre:         string;
-  apellido:       string;
-  identificacion: number;
-  email:          string;
-  estado:         number;
-  departamentos:  Departamentos;
-}
 
-export interface Departamentos {
-  nombre:     string;
-  facultades: TiposComision;
-}
+
+
 
