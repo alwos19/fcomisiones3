@@ -25,9 +25,8 @@ export class ComisionesService {
 
           console.log(lenEstados);
 
-          const final_estado = newComision.intermediate_comisiones[lenEstados - 1][
-             'intermediate_estados'
-           ]['nombre'];
+          const final_estado = newComision.intermediate_comisiones[lenEstados - 1]
+          ['intermediate_estados']['nombre'];
 
           newComision.nombreEstadoActual = final_estado;
           return newComision

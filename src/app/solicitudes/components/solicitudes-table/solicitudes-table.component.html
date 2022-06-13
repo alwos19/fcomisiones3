@@ -2,7 +2,7 @@
 
 
 
-<div class="container shadow-sm pt-4 pl-4 pr-4 mb-5 bg-white rounded">
+<div class="container shadow-sm pt-4 pl-4 pr-2 mb-5 bg-white rounded">
 <form>
 
 
@@ -13,8 +13,13 @@
           <th scope="col">#</th>
           <th scope="col">Solicitud</th>
           <th scope="col">Estado</th>
-          <th scope="col">Facultad</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Usuario</th>
           <th scope="col">Departamento</th>
+          <th scope="col">Facultad</th>
+          <th scope="col">Acciones</th>
+
+
           <!-- <th scope="col" sortable="createdAt" (sort)="onSort($event)">Fecha Creación</th>-->
         </tr>
       </thead>
@@ -33,9 +38,11 @@
 
           <th scope="row">{{ comision.id }}</th>
           <td>{{ comision.tipos_comision.nombre }}</td>
-          <td> {{ comision.nombreEstadoActual }}</td>
-          <!-- <td>{{ comision.facultad}}</td> -->
-          <!-- <td>{{ comision.departamento }}</td> -->
+          <td>{{ comision.nombreEstadoActual }}</td>
+          <td>{{ comision.createdAt}}</td>
+          <td>{{ comision.usuarios.nombre }} {{ comision.usuarios.apellido }}</td>
+          <td>{{ comision.usuarios.departamentos.nombre}}</td>
+          <td>{{ comision.usuarios.departamentos.facultades.nombre}}</td>
          </tr>
       </tbody>
     </table>

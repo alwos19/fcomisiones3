@@ -5,7 +5,7 @@ export interface ComisionEstados {
   comisiones_id:           number;
   estados_id:              number;
   intermediate_comisiones: IntermediateComisiones;
-  intermediate_estados:    IntermediateEstados;
+  //intermediate_estados:    IntermediateEstados;
 }
 
 export interface IntermediateComisiones {
@@ -30,7 +30,3 @@ export interface Facultades {
   nombre: string;
 }
 
-export interface IntermediateEstados {
-  nombre:      string;
-  descripcion: null;
-}

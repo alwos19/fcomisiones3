@@ -12,7 +12,18 @@ export interface Comision {
   updatedAt:               Date;
   createdAt:               Date;
   tipos_comision_id:       number;
-  usuarios_id:             number;
+  usuarios:{
+    nombre: string;
+    apellido: string;
+
+
+    departamentos: {
+      nombre: string;
+      facultades:{
+        nombre: string
+      }
+    }
+  }
   tipos_comision:          TiposComision;
   documentos:              any[];
   cumplidos:               any[];
