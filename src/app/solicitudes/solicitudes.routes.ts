@@ -22,8 +22,6 @@ const routes: Routes = [
 
   },
 
-
-
   // Fallback when no prior routes is matched
   { path: '**', redirectTo: '/solictudes-tabla', pathMatch: 'full' },
 ];
