@@ -1,0 +1,41 @@
+body{
+    min-height: 100vh;
+}
+
+.container{
+    min-height: 100vh;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.card{
+    margin: auto;
+    padding: 1em 0.5em;
+}
+
+
+
+.formfloatig{
+    position: relative;
+    padding-bottom: .4em;
+}
+
+.form-control:focus + .formLabel,
+.form-control:not(:placeholder-shown) + .formLabel{
+    transform: translateY(0) scale(.5);
+    transform-origin: left top;
+    color: rgba(74, 132, 248, 0.8);
+}
+
+.formLabel{
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s
+}

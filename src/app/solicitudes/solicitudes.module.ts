@@ -9,7 +9,7 @@ import { VercomisionesComponent } from './page/comisiones/vercomisiones/vercomis
 @NgModule({
   declarations: [
     SolicitudesTableComponent,
-    VercomisionesComponent
+    VercomisionesComponent,
   ],
   imports: [
 

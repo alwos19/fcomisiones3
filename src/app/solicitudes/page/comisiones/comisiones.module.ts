@@ -6,7 +6,6 @@ import { VercomisionesComponent } from './vercomisiones/vercomisiones.component'
 
 @NgModule({
   declarations: [
-    VercomisionesComponent
   ],
   imports: [
     CommonModule
