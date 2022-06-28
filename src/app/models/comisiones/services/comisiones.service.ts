@@ -1,4 +1,4 @@
-import { Comision, intermediate_comisiones } from '../../interfaces/comisiones/comisiones';
+import { Comision, intermediate_comisiones } from '../interfaces/comisiones';
 
 import { Injectable } from '@angular/core';
 import { Observable, of, map } from "rxjs";

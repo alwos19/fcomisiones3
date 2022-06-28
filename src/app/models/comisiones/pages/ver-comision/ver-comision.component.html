@@ -1,0 +1,79 @@
+
+
+<div
+  
+  class="container shadow-sm pt-4 pl-4 pr-4 mb-5 bg-white rounded">
+  
+  <div class="row header-row">
+    <div class="col">
+      <span class="text-secondary">COMISION</span>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row regular-row">
+    <div class="col-6 label">Fecha de Creación</div>
+    <div class="col-sm-6">{{ solicitud.createdAt | date: "fullDate" }}</div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Fecha de Actualización</div>
+    <div class="col-sm-6">{{ solicitud.fecha_actualizacion | date: "fullDate" }}
+    </div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Día que Inicia</div>
+    <div class="col-sm-6">{{ solicitud.fecha_inicio | date: "fullDate" }}</div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Día que Termina</div>
+    <div class="col-sm-6">{{ solicitud.fecha_fin | date: "fullDate" }}</div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Justificación</div>
+    <div class="col-sm-6">{{ solicitud.justificacion }}</div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Anexos</div>
+    <div class="col-sm-6"><i class="fas fa-circle"></i> Anexo 1</div>
+  </div>
+
+  <div class="row regular-row">
+    <div class="col-6 label">Estado Actual de la Comision</div>
+    <div class="col-6">
+      
+  <div class="row">
+    <div class="col-4">
+      <span
+        class="badge badge-pill pill"
+        [ngClass]="{
+          'bg-solicitada':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'SOLICITADA',
+          'bg-aprobada':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'APROBADA',
+          'bg-visto-bueno':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'VISTO BUENO',
+          'bg-finalizada':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'FINALIZADA',
+          'bg-rechazada-decanato':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'RECHAZADA DECANATO',
+          'bg-rechazada-coordinacion':
+            solicitud.estadoActual['intermediate_estados']['nombre'] ===
+            'RECHAZADA COORDINACIÓN'
+        }"
+      >
+        {{ solicitud.estadoActual["intermediate_estados"]["nombre"] }}
+      </span>
+    </div>
+</div>
+

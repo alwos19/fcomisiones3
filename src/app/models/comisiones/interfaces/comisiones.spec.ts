@@ -1,4 +1,4 @@
-import { Comisiones } from './comisiones';
+import { Comision } from './comisiones';
 
 describe('Comisiones', () => {
   it('should create an instance', () => {

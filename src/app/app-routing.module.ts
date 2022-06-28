@@ -5,16 +5,25 @@ const routes: Routes = [
 
 {
   path: '',
-  redirectTo: '/home',
+  redirectTo: '/home/tabla-solicitudes',
   pathMatch:'full'
 },
 
 {
   path: 'home',
-  loadChildren:()=> import('./solicitudes/solicitudes.module').then(
-    (m) => m.SolicitudesModule)
+  loadChildren:()=> 
+    import('./components/components.module').then(
+    (m) => m.ComponentsModule)
 },
-{ path: '**', redirectTo: '/home', pathMatch: 'full' },
+
+{
+  path: 'comision',
+  loadChildren:()=>
+  import('./models/comisiones/comisiones.module').then(
+    (m)=>m.ComisionesModule)
+}
+
+
 
 
 ];

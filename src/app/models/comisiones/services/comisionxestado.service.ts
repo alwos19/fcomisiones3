@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { ComisionEstados } from "../../interfaces/comisiones/comisionesxestados";
+import { ComisionEstados } from "../interfaces/comisionesxestados";
 
 @Injectable({
   providedIn: 'root'

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VercomisionesComponent } from './vercomisiones.component';
+import { VerComisionComponent } from './ver-comision.component';
 
-describe('VercomisionesComponent', () => {
-  let component: VercomisionesComponent;
-  let fixture: ComponentFixture<VercomisionesComponent>;
+describe('VerComisionComponent', () => {
+  let component: VerComisionComponent;
+  let fixture: ComponentFixture<VerComisionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VercomisionesComponent ]
+      declarations: [ VerComisionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VercomisionesComponent);
+    fixture = TestBed.createComponent(VerComisionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
