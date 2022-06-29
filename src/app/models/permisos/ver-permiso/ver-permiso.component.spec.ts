@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VercomisionesComponent } from './vercomisiones.component';
+import { VerPermisoComponent } from './ver-permiso.component';
 
-describe('VercomisionesComponent', () => {
-  let component: VercomisionesComponent;
-  let fixture: ComponentFixture<VercomisionesComponent>;
+describe('VerPermisoComponent', () => {
+  let component: VerPermisoComponent;
+  let fixture: ComponentFixture<VerPermisoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VercomisionesComponent ]
+      declarations: [ VerPermisoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VercomisionesComponent);
+    fixture = TestBed.createComponent(VerPermisoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

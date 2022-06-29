@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Comision } from '../../interfaces/comisiones/comisiones';
-import { ComisionEstados } from '../../interfaces/comisiones/comisionesxestados';
-import { Permiso } from '../../interfaces/permisos/permisos';
-import { ComisionesService} from '../../services/comisiones/comisiones.service';
-import { ComisionxestadoService} from '../../services/comisiones/comisionxestado.service';
-import { PermisosService } from "../../services/permisos/permisos.service";
+import { Comision } from '../../models/comisiones/interfaces/comisiones';
+import { ComisionEstados } from '../../models/comisiones/interfaces/comisionesxestados';
+import { ComisionesService} from '../../models/comisiones/services/comisiones.service';
+import { ComisionxestadoService} from '../../models/comisiones/services/comisionxestado.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +14,7 @@ import { Router } from '@angular/router';
 export class SolicitudesTableComponent implements OnInit {
 
   comisiones!: Comision[];
-  permisos!: Permiso[];
+  // permisos!: Permiso[];
   comisionxestado!: ComisionEstados[];
 
 
@@ -27,7 +25,7 @@ export class SolicitudesTableComponent implements OnInit {
 
     private comisionesService: ComisionesService,
     private comisionxEstdoService: ComisionxestadoService,
-    private permisosService: PermisosService,
+    // private permisosService: PermisosService,
     // // public searchSolicitudesService: SearchSolicitudesService,
     // public router: Router
   ){}
@@ -41,7 +39,7 @@ export class SolicitudesTableComponent implements OnInit {
       comisiones => this.comisiones = comisiones
     );
 
-    this.permisos = this.permisosService.getPermisos();
+    // this.permisos = this.permisosService.getPermisos();
 
     this.comisionxEstdoService.getComisionxEstado().subscribe(
       comisionesxEstado => this.comisionxestado = comisionesxEstado
