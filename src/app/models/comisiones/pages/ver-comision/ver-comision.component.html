@@ -14,7 +14,7 @@
 
   <div class="row regular-row">
     <div class="col-6 label">Fecha de Creación</div>
-    <div class="col-sm-6">data</div>
+    <div class="col-sm-6">{{ comision?.estadoActual?.createdAt| date: "fullDate" }}</div>
   </div>
 
   <div class="row regular-row">
@@ -34,7 +34,7 @@
 
   <div class="row regular-row">
     <div class="col-6 label">Justificación</div>
-    <div class="col-sm-6">data</div>
+    <div class="col-sm-6"> {{ comision?.justificacion }}</div>
   </div>
 
   <div class="row regular-row">

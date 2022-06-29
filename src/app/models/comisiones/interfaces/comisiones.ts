@@ -28,6 +28,10 @@ export interface Comision {
   documentos:              any[];
   cumplidos:               any[];
   nombreEstadoActual: string;
+  estadoActual: {
+    createdAt: Date;
+    intermediate_estados: { nombre: string };
+  }
 
 intermediate_comisiones: [
   {

@@ -9,7 +9,7 @@ import { ComisionEstados } from "../interfaces/comisionesxestados";
 })
 export class ComisionxestadoService {
 
-  private urlEndPoint:string = 'http://localhost:3000/api/comisiones-estados';
+  private urlEndPoint:string = 'http://localhost:5200/api/comisiones-estados';
 
   constructor( private http : HttpClient) { }
 

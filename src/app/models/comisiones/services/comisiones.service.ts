@@ -1,4 +1,4 @@
-import { Comision, intermediate_comisiones } from '../interfaces/comisiones';
+import { Comision } from '../interfaces/comisiones';
 
 import { Injectable } from '@angular/core';
 import { Observable, of, map } from "rxjs";
@@ -9,17 +9,17 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ComisionesService {
-  private urlEndPoint:string = 'http://localhost:3000/api/comisiones';
+  private urlEndPoint:string = 'http://localhost:5200/api/comisiones';
 
 
   constructor( private http: HttpClient) { }
 
-  getComisiones(): Observable <any> {
+  getComisiones() {
     return this.http.get<Comision[]>(this.urlEndPoint).pipe(
       map((res) => {
         const comision = res as Comision[];
         return comision.map((newComision) => {
-          // console.log(newComision.documentos.length);
+          console.log(newComision);
 
           const lenEstados = newComision.intermediate_comisiones.length;
 
@@ -33,6 +33,20 @@ export class ComisionesService {
         });
       })
     )
+   }
+
+   getComision(id:string) {
+      return this.http.get<Comision>(`${this.urlEndPoint}/${id}`).pipe(
+        map((res)=> {
+          const lenEstados = res.intermediate_comisiones.length;
+          const finalEstado = res.intermediate_comisiones[lenEstados-1];
+          res.estadoActual = finalEstado;
+          console.log(res.estadoActual);
+          return res;
+          
+        })
+        
+      )
    }
 
 

@@ -44,6 +44,7 @@ export class SolicitudesTableComponent implements OnInit {
     this.comisionxEstdoService.getComisionxEstado().subscribe(
       comisionesxEstado => this.comisionxestado = comisionesxEstado
     )
+    console.log(this.comisiones);
   }
 
 }
