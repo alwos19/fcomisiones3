@@ -39,6 +39,7 @@ export class ComisionesService {
       return this.http.get<Comision>(`${this.urlEndPoint}/${id}`).pipe(
         map((res)=> {
           const lenEstados = res.intermediate_comisiones.length;
+          console.log(lenEstados)
           const finalEstado = res.intermediate_comisiones[lenEstados-1];
           res.estadoActual = finalEstado;
           console.log(res.estadoActual);

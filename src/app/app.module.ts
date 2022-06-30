@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComisionesService } from './models/comisiones/services/comisiones.service';
 import { ComisionesModule } from './models/comisiones/comisiones.module';
 import { ComponentsModule } from './components/components.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ComponentsModule } from './components/components.module';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    ComisionesModule
+    ComisionesModule,
+    NgbModule
 
   ],
 
