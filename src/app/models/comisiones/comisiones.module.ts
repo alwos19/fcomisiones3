@@ -9,7 +9,7 @@ import { ComisionesRoutingModule } from './comisiones.routes';
 @NgModule({
   declarations: [
     CrearComisionComponent,
-    VerComisionComponent
+    VerComisionComponent,
   ],
   imports: [
     CommonModule,

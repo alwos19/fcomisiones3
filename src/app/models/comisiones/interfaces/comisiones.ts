@@ -12,6 +12,7 @@ export interface Comision {
   updatedAt:               Date;
   createdAt:               Date;
   tipos_comision_id:       number;
+  
   usuarios:{
     nombre: string;
     apellido: string;

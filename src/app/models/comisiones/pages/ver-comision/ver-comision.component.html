@@ -2,7 +2,7 @@
 
 <div
   
-  class="container shadow-sm pt-4 pl-4 pr-4 mb-5 bg-white rounded">
+  class="card text-align-left container shadow-sm pt-4 pl-4 pr-4 mb-5 bg-white rounded">
   
   <div class="row header-row">
     <div class="col">
@@ -16,26 +16,31 @@
     <div class="col-6 label">Fecha de Creación</div>
     <div class="col-sm-6">{{ comision?.estadoActual?.createdAt| date: "fullDate" }}</div>
   </div>
+  <hr/>
 
   <div class="row regular-row">
     <div class="col-6 label">Fecha de Actualización</div>
     <div class="col-sm-6"></div>
   </div>
+  <hr/>
 
   <div class="row regular-row">
     <div class="col-6 label">Día que Inicia</div>
     <div class="col-sm-6">data</div>
   </div>
+  <hr/>
 
   <div class="row regular-row">
     <div class="col-6 label">Día que Termina</div>
     <div class="col-sm-6">data</div>
   </div>
+  <hr/>
 
   <div class="row regular-row">
     <div class="col-6 label">Justificación</div>
     <div class="col-sm-6"> {{ comision?.justificacion }}</div>
   </div>
+  <hr/>
 
   <div class="row regular-row">
     <div class="col-6 label">Anexos</div>
