@@ -8,7 +8,6 @@ import { ComisionesService } from './models/comisiones/services/comisiones.servi
 import { ComisionesModule } from './models/comisiones/comisiones.module';
 import { ComponentsModule } from './components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill';
 
 
 
@@ -25,7 +24,6 @@ import { QuillModule } from 'ngx-quill';
     ComponentsModule,
     ComisionesModule,
     ReactiveFormsModule,
-    QuillModule.forRoot(),
 
 
   ],

@@ -4,6 +4,7 @@ import { FEvalucionPropuestaComponent } from './pages/f-evalucion-propuesta/f-ev
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DexclusivaRoutingModule } from './dexclusiva.routes';
 import { CartaInicioComponent } from './pages/carta-inicio/carta-inicio.component';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -16,7 +17,8 @@ import { CartaInicioComponent } from './pages/carta-inicio/carta-inicio.componen
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DexclusivaRoutingModule
+    DexclusivaRoutingModule,
+    QuillModule.forRoot()
   ]
 })
 export class DexclusivaModule { }
