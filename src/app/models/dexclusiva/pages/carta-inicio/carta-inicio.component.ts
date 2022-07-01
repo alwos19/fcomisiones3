@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-carta-inicio',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartaInicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder,
+  ) {
+    
+   }
+   FormCarta = this.fb.group({
+    Cuerpo: ['', Validators.required],
+   }
+   );
 
   ngOnInit(): void {
+  }
+
+  
+  OnSubmit() {
+    console.log(this.FormCarta.value);
   }
 
 }
