@@ -14,7 +14,7 @@ export class ComisionesService {
 
   constructor( private http: HttpClient) { }
 
-  getComisiones(): Observable <any> {
+  getComisiones() {
     return this.http.get<Comision[]>(this.urlEndPoint).pipe(
       map((res) => {
         const comision = res as Comision[];

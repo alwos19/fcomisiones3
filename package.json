@@ -19,6 +19,10 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
+    "angular-font-awesome": "^3.1.2",
+    "font-awesome": "^4.7.0",
+    "ngx-quill": "^17.1.1",
+    "platform-browser": "0.0.1-security",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

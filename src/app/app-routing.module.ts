@@ -21,9 +21,14 @@ const routes: Routes = [
   loadChildren:()=>
   import('./models/comisiones/comisiones.module').then(
     (m)=>m.ComisionesModule)
+},
+
+{
+  path: 'dexclusiva',
+  loadChildren:()=>
+  import('./models/dexclusiva/dexclusiva.module').then(
+    (m)=>m.DexclusivaModule)
 }
-
-
 
 
 ];
