@@ -7,19 +7,17 @@ import { VercomisionesComponent } from './page/comisiones/vercomisiones/vercomis
 const routes: Routes = [
   {
     path: 'solicitudes',
-    component: SolicitudesTableComponent
+    component: SolicitudesTableComponent,
   },
 
   {
-
     path: 'crear-comision',
-    component: CrearComisionComponent
+    component: CrearComisionComponent,
   },
 
   {
     path: 'ver-comision/id',
-    component: VercomisionesComponent
-
+    component: VercomisionesComponent,
   },
 
   // Fallback when no prior routes is matched
