@@ -10,11 +10,14 @@ const routes: Routes = [
   },
 
   {
-    path: '',
+    path: 'home',
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
 
-  { path: '**', redirectTo: 'auth'}
+  { path: 'comision',
+    loadChildren:() => import( './modules/comisiones/comisiones.module').then(m=> m.ComisionesModule)},
+
+  { path: '**', redirectTo: 'home'}
 
 
 
