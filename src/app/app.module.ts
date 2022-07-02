@@ -7,13 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComisionesService } from './models/comisiones/services/comisiones.service';
 import { ComisionesModule } from './models/comisiones/comisiones.module';
 import { ComponentsModule } from './components/components.module';
-<<<<<<< HEAD
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-=======
 import { ReactiveFormsModule } from '@angular/forms';
 
 
->>>>>>> Simon
 
 
 @NgModule({
@@ -27,12 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ComponentsModule,
     ComisionesModule,
-<<<<<<< HEAD
-    NgbModule
-=======
     ReactiveFormsModule,
 
->>>>>>> Simon
 
   ],
 
