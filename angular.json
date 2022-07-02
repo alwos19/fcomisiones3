@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "46cd74a2-70d0-4055-84fd-680cb2b535d9"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -29,10 +32,15 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "./node_modules/quill/dist/quill.bubble.css",
+              "./node_modules/quill/dist/quill.snow.css",
+              "./node_modules/quill/dist/quill.core.css" 
             ],
             "scripts": ["src/assets/js/jquery-3.3.1.slim.min.js",
-              "src/assets/js/popper.min.js"
+              "src/assets/js/popper.min.js",
+              "./node_modules/quill/dist/quill.js"
 
             ]
           },

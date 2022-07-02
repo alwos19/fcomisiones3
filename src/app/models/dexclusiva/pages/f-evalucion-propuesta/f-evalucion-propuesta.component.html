@@ -1,0 +1,289 @@
+<div class="container">
+
+
+    <form class="need-validation card" novalidate [formGroup]="fBasicInfo" (ngSubmit)="onSubmit()">
+        <h3 class="formTitle">
+            Formulario solicitud dedicación exclusiva
+        </h3>
+
+        <h5>Información de la unidad académica</h5>
+        <div class="formFloatig">
+            <select class="form-select form-select-lg mb-3" id="floatingUnidadAcademica"
+                formControlName="unidadAcademica" required [ngClass]="{'is-invalid': isInvalidForm('unidadAcademica')}">
+                <option [value]="unidad" *ngFor="let unidad of unidades">{{unidad}}</option>
+            </select>
+            <label for="floatingUnidadAcademica">Unidad académica</label>
+        </div>
+        <h5>Datos del profesor solicitante</h5>
+        <div class="alert alert-info">
+            <p>
+                Por favor cerciorese que los datos a continuación sean correctos.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="formfloatig">
+                    <input id="floatingNombre" formControlName="nombre" class="form-control" placeholder=" "
+                        [ngClass]="{'is-invalid': isInvalidForm('nombre')}" required>
+                    <label for="floatingNombre" class="formLabel">Nombres completos</label>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="formfloatig">
+                    <input id="floatingApellidos" formControlName="apellido" class="form-control" placeholder=" "
+                        [ngClass]="{'is-invalid': isInvalidForm('apellido')}" required>
+                    <label for="floatingApellidos" class="formLabel">Apellidos completos</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="formfloatig">
+            <input id="floatingdId" formControlName="identificacion" class="form-control" type="number" placeholder=" "
+                [ngClass]="{'is-invalid': isInvalidForm('identificacion')}" required>
+            <label for="floatingdId" class="formLabel">Número de identificación</label>
+        </div>
+
+        <div class="formfloatig">
+            <input id="floatingExt" placeholder=" " formControlName="nExtOffice" class="form-control">
+            <label for="floatingExt" class="formLabel">Número de extención oficina</label>
+        </div>
+
+        <div class="formfloatig">
+            <input id="floatingtCel" formControlName="tCel" class="form-control" type="number" placeholder=" "
+                [ngClass]="{'is-invalid': fBasicInfo.controls['tCel'].invalid }">
+            <label for="floatingtCel" class="formLabel">Número de teléfono célular</label>
+        </div>
+
+        <div class="formfloatig">
+            <input id="floatingEmail" formControlName="email" class="form-control" type="email" placeholder=" "
+                [ngClass]="{'is-invalid': isInvalidForm('email')}" required>
+            <label for="floatingEmail" class="formLabel">Correo Institucional
+            </label>
+        </div>
+        <hr>
+        <h4>Referencias básicas de la dedicación exclusiva</h4>
+        <div class="alert alert-warning">
+            <p>
+                A continuación los datos son obligatorios.
+            </p>
+        </div>
+
+        <div class="formfloatig">
+            <input id="floatingTitulo" formControlName="titulo" class="form-control" type="text" placeholder=" "
+                [ngClass]="{'is-invalid': isInvalidForm('titulo')}" required>
+            <label for="floatingTitulo" class="formLabel"> Título de la propuesta o proyecto
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <div class="formfloatig">
+                    <input id="floatingTiempo" formControlName="tiempoSol" class="form-control" type="number"
+                        placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('tiempoSol')}" required>
+                    <label for="floatingTiempo" class="formLabel">Tiempo solicitado
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <div class="formfloatig">
+                    <select class="form-select form-select-lg mb-3" id="floatingcampo" formControlName="campo" required
+                        [ngClass]="{'is-invalid': isInvalidForm('campo')}" placeholder=" ">
+                        <option [value]="campo" *ngFor="let campo of campos">{{campo}}</option>
+                    </select>
+                    <label for="floatingcampo" class="selectLabel" [ngClass]="{'isFill': fBasicInfo.controls['campo'].valid}">Campo o modalidad</label>
+                </div>
+            </div>
+        </div>
+
+        <h5>Documento comprobante de inscripción en  el Sistema Universitario de Investigación (acta, contrato u otro):</h5>
+        <div class="alert alert-danger">
+            <p>
+                Indicaciones sobre este campo importante!
+                Lo puse no requerido por ahora!!!
+            </p>
+        </div>
+
+        <div class="formfloatig">
+            <textarea id="floatingComprobante" formControlName="descComprobante" class="form-control"
+                placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('descComprobante')}" rows="5">
+            </textarea>
+            <label for="floatingComprobante" class="formLabel">Comprobante de inscripción
+            </label>
+        </div>
+        
+        <hr>
+        <h5>Apoya al plan de Desarrollo Institucional Vigente en:</h5>
+        <h6>Temas:</h6>
+        <div style="width: 100%;" formArrayName="temaExt">
+
+            <div *ngFor="let tema of temasArr.controls; last as isLast; let i=index" class="arrayLike formfloatig"
+                [formGroupName]="i">
+                <textarea id="floatingTema{{i}}" formControlName="tema" class="form-control" type="text" placeholder=" "
+                    [ngClass]="{'is-invalid': tema.invalid && tema.touched}"></textarea>
+                <label for="floatingTema{{i}}" class="formLabel">Tema {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('temaExt',i)"
+                        *ngIf="temasArr.length > 1">
+                        <i class="fa fa-minus"></i>
+
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputTemas()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+        <h6>Objetivo(s) estratégico(s):</h6>
+        <div style="width: 100%;" formArrayName="objEspDesarrollo">
+
+            <div *ngFor="let objEstrategico of objEstrategicosArr.controls; last as isLast; let i=index" class="arrayLike formfloatig"
+                [formGroupName]="i">
+                <textarea id="floatingobjEspDesarrollo{{i}}" formControlName="objEstrategico" class="form-control" type="text" placeholder=" "
+                    [ngClass]="{'is-invalid': objEstrategico.invalid && objEstrategico.touched}"></textarea>
+                <label for="floatingobjEspDesarrollo{{i}}" class="formLabel">Objetivo estratégico de desarrollo {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('objEspDesarrollo',i)"
+                        *ngIf="objEstrategicosArr.length > 1">
+                        <i class="fa fa-minus"></i>
+
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputObjEstrategicos()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+
+        <h6>Meta(s):</h6>
+        <div style="width: 100%;" formArrayName="metas">
+
+            <div *ngFor="let meta of metasArr.controls; last as isLast; let i=index" class="arrayLike formfloatig"
+                [formGroupName]="i">
+                <textarea id="floatingMeta{{i}}" formControlName="meta" class="form-control" type="text" placeholder=" "
+                    [ngClass]="{'is-invalid': meta.invalid && meta.touched}"></textarea>
+                <label for="floatingMeta{{i}}" class="formLabel">Meta {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('metas',i)"
+                        *ngIf="metasArr.length > 1">
+                        <i class="fa fa-minus"></i>
+
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputMetas()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            
+
+        </div>
+        <h6>Accion(es) Estratégica(s):</h6>
+        <div style="width: 100%" formArrayName="accEstrategicas">
+            
+            <div *ngFor="let accion of accEstrategicasArr.controls; last as isLast; let i=index"
+                class="arrayLike formfloatig" [formGroupName]="i">
+                <textarea id="floatingaccEstrategicas{{i}}" formControlName="accion" class="form-control"
+                    type="text" placeholder=" " [ngClass]="{'is-invalid': accion.invalid && accion.touched}">
+                </textarea>
+                <label for="floatingaccEstrategicas{{i}}" class="formLabel">Acción estratégica {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button"
+                        (click)="removeInput('accEstrategicas',i)" *ngIf="accEstrategicasArr.length > 1">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputaccEstrategicas()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+        
+        </div>
+        <hr>
+        <h5>Apoya al plan de Acción Institucional Vigente en:</h5>
+        <h6>Objetivo(s) extratégico(s) institucional(es):</h6>
+        <div style="width: 100%" formArrayName="objEstrInstitucional">
+            
+            <div *ngFor="let objetivo of objEstrInstitucionalArr.controls; last as isLast; let i=index"
+                class="arrayLike formfloatig" [formGroupName]="i">
+                <textarea id="floatingobjEstrInstitucional{{i}}" formControlName="objetivo" class="form-control"
+                    type="text" placeholder=" " [ngClass]="{'is-invalid': objetivo.invalid && objetivo.touched}">
+                </textarea>
+                <label for="floatingobjEstrInstitucional{{i}}" class="formLabel">Objetivo estratégico institucional {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button"
+                        (click)="removeInput('objEstrInstitucional',i)" *ngIf="objEstrInstitucionalArr.length > 1">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputObjEstrInstitucional()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+        
+        </div>
+        <h6>Indicador(es):</h6>
+        <div style="width: 100%" formArrayName="indicadores">
+            
+            <div *ngFor="let indicador of indicadoresArr.controls; last as isLast; let i=index"
+                class="arrayLike formfloatig" [formGroupName]="i">
+                <textarea id="floatingindicadores{{i}}" formControlName="indicador" class="form-control"
+                    type="text" placeholder=" " [ngClass]="{'is-invalid': indicador.invalid && indicador.touched}">
+                </textarea>
+                <label for="floatingindicadores{{i}}" class="formLabel">Indicador {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button"
+                        (click)="removeInput('indicadores',i)" *ngIf="indicadoresArr.length > 1">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputIndicadores()" *ngIf="isLast">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+        
+        </div>
+
+        <hr>
+        <h5>Productos:</h5>
+        <div class="alert alert-info">
+        <p>El profesor debe indicar los productos adquiere y se compromete a entregar una vez culmine su período de Dedicación Exclusiva. Esta información será consignada en la Resolución de Vicerrectoría de Docencia.</p>
+    </div>
+        <div style="width: 100%" formArrayName="productos">
+            
+            <div *ngFor="let producto of productosArr.controls; last as isLast; let i=index"
+                class="arrayLike formfloatig" [formGroupName]="i">
+                <textarea id="floatingproductos{{i}}" formControlName="producto" class="form-control"
+                    type="text" placeholder=" " [ngClass]="{'is-invalid': producto.invalid && producto.touched}">
+                </textarea>
+                <label for="floatingproductos{{i}}" class="formLabel">Producto {{i+1}}</label>
+                <div class="buttons">
+                    <button class="btn btn-circle btn-danger btn-sm" type="button"
+                        (click)="removeInput('productos',i)" *ngIf="productosArr.length > 1">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputProductos()" *ngIf="isLast" >
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+
+            
+        
+        </div>
+    </div>
+
+        <button class="btn btn-success" (submit)="true" [disabled]="fBasicInfo.invalid">Enviar</button>
+
+    </form>
+</div>

@@ -1,0 +1,45 @@
+body{
+    min-height: 100vh;
+}
+button{
+    margin-top: 5px;
+}
+
+h3, h5{
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.container{
+    margin-top: 5vh;
+    max-width: 1440px;
+}
+ 
+:host #discipline-qe /deep/ .ql-container{
+    height: 250px;
+  }
+  
+
+.carta{
+    margin: auto;
+    padding: 1em 0.5em;
+
+    background-color: gray;
+    width: 70%;
+    aspect-ratio: 420/594;
+    
+}
+.form-group{
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;    
+}
+
+.ladoizquierdo{
+    margin: auto;
+}
+
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
