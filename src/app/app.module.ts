@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ComisionesService } from './models/comisiones/services/comisiones.service';
-import { ComisionesModule } from './models/comisiones/comisiones.module';
-import { ComponentsModule } from './components/components.module';
+import { ComisionesService } from './core/services/comisiones.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { SideBarComponent } from './shared/components/side-bar/side-bar.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+
 
 
 
@@ -15,14 +17,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
+    SideBarComponent,
+    HeaderComponent,
+    
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    ComponentsModule,
-    ComisionesModule,
     ReactiveFormsModule,
 
 
