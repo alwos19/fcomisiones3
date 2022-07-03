@@ -1,6 +1,4 @@
-body{
-    min-height: 100vh;
-}
+
 button{
     margin-top: 5px;
 }
@@ -11,8 +9,18 @@ h3, h5{
 }
 
 .container{
-    margin-top: 5vh;
+    margin:auto;
     max-width: 1440px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.row{
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 25px;
 }
  
 :host #discipline-qe /deep/ .ql-container{
@@ -25,7 +33,7 @@ h3, h5{
     padding: 1em 0.5em;
 
     background-color: gray;
-    width: 70%;
+    width: 100%;
     aspect-ratio: 420/594;
     
 }

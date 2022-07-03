@@ -13,6 +13,8 @@ export const routes: Routes = [
     path: "carta-de-iniciacion",
     component: CartaInicioComponent
 }
+
+
 ];
 
 @NgModule({

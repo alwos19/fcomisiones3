@@ -8,6 +8,7 @@ import { ComisionesService } from './models/comisiones/services/comisiones.servi
 import { ComisionesModule } from './models/comisiones/comisiones.module';
 import { ComponentsModule } from './components/components.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

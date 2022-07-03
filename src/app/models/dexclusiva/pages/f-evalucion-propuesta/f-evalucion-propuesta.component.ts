@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Dexclusiva } from '../../interfaces/dexclusiva';
+import { DexclusivaService } from '../../services/dexclusiva.service';
+import { CookieService } from 'ngx-cookie-service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-f-evalucion-propuesta',
@@ -11,7 +15,8 @@ export class FEvalucionPropuestaComponent implements OnInit {
   constructor(
     // private : UserSvc Falta entregar información del usuario
     private fb : FormBuilder,
-
+    private dexclusivaSvc: DexclusivaService,
+    private cookie: CookieService
   ) { }
   
   public unidades = [
@@ -65,30 +70,43 @@ export class FEvalucionPropuestaComponent implements OnInit {
     }
 
   private isEmailValid = /^[a-zA-Z0-9._%+-]+@udea.edu.co$/;
+  private fExclusiva : Dexclusiva = {
+    titulo: '',
+    tiempo_solicitado: 0,
+    campo_modalidad: '',
+    descripcion_comprobante: '',
+    tema_estrategico: [],
+    objetivo_estrategico_desarrollo: [],
+    metas: [],
+    indicador: [],
+    acciones_estrategicas: [],
+    objetivo_estrategico_institucional: [],
+    productos: []
+
+  };
 
   fBasicInfo = this.fb.group({
-    unidadAcademica : ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     nombre: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     apellido: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     identificacion: [Number, [Validators.required, Validators.min(1000), Validators.max(999999999999)]],
-    nExtOffice: ['', [Validators.minLength(3), Validators.maxLength(255)]],
-    tCel: [Number, [Validators.min(1000000000), Validators.max(9999999999)]],
+    extension_oficina: ['', [Validators.minLength(3), Validators.maxLength(255)]],
+    celular: [Number, [Validators.min(1000000000), Validators.max(9999999999)]],
     email: ['',[Validators.required, Validators.pattern(this.isEmailValid)]],
     titulo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-    tiempoSol: [Number, [Validators.required, Validators.min(1), Validators.max(11)]],
-    campo: ['', [Validators.required , Validators.minLength(3), Validators.maxLength(50000)]],
-    descComprobante: ['',[Validators.minLength(3), Validators.maxLength(255)]],
-    temaExt: this.fb.array([this.temasgroup()],[Validators.required]),
-    objEspDesarrollo: this.fb.array([this.objEstrategicasgroup()],[Validators.required]),
+    tiempo_solicitado: [Number, [Validators.required, Validators.min(1), Validators.max(11)]],
+    campo_modalidad: ['', [Validators.required , Validators.minLength(3), Validators.maxLength(50000)]],
+    descripcion_comprobante: ['',[Validators.minLength(3), Validators.maxLength(255)]],
+    tema_estrategico: this.fb.array([this.temasgroup()],[Validators.required]),
+    objetivo_estrategico_desarrollo: this.fb.array([this.objEstrategicasgroup()],[Validators.required]),
     metas: this.fb.array([this.metasgroup()],[Validators.required]),
-    accEstrategicas: this.fb.array([this.accEstrategicasgroup()],[Validators.required]),
-    objEstrInstitucional: this.fb.array([this.objEstrInstitucionalgroup()],[Validators.required]),
-    indicadores: this.fb.array([this.indicadoresgroup()],[Validators.required]),
+    acciones_estrategicas: this.fb.array([this.acciones_estrategicasgroup()],[Validators.required]),
+    objetivo_estrategico_institucional: this.fb.array([this.objetivo_estrategico_institucionalgroup()],[Validators.required]),
+    indicador: this.fb.array([this.indicadorgroup()],[Validators.required]),
     productos: this.fb.array([this.productosgroup()],[Validators.required]),
   })
 
   ngOnInit(): void {
-    // Se debe hacer realmente un sevice
+    this.cookie.set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxMiwidGlwb19pZGVudGlmaWNhY2lvbiI6IkNDIiwiaWRlbnRpZmljYWNpb24iOjExMSwibm9tYnJlIjoiYW5sbHkiLCJhcGVsbGlkbyI6InZlbGV6IiwiZW1haWwiOiJhbmxseUBnbWFpbC5jb20iLCJlc3RhZG8iOjEsImNvbnRyYXNlbmEiOiIkMmEkMTIkby52NFhGVnhMRHdYZEZEcUlqbk50dUFLNWlDRmo0UXVKRDJKY2JuLjVuNXlrd0RBalNYRk8iLCJkaWFfZGlzcG9uaWJsZSI6MywiY3JlYXRlZEF0IjoiMjAyMi0wNy0wMVQxNjoxMTozMC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wNy0wMVQxNjoxMTozMC4wMDBaIiwiZGVwYXJ0YW1lbnRvc19pZCI6MSwicm9sZXNfaWQiOjV9LCJpYXQiOjE2NTY3ODkxODYsImV4cCI6MTY1Njg3NTU4Nn0.86pLO3W9UFtIuTmv5RhbH8GOUWLhd8LPzVz_W0ozM9o')
     this.fBasicInfo.patchValue(this.Usuario);
     this.fBasicInfo.controls['nombre'].disable();
     this.fBasicInfo.controls['apellido'].disable();
@@ -97,7 +115,10 @@ export class FEvalucionPropuestaComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.fBasicInfo.value);
+    let {unidad_academica, nombre, apellido, identificacion, email, ...others} = this.fBasicInfo.value;
+    this.fExclusiva = others;
+    console.log(this.fExclusiva);
+    this.dexclusivaSvc.postDexclusiva(this.fExclusiva).subscribe(); 
   }
 
   // Temas
@@ -109,7 +130,7 @@ export class FEvalucionPropuestaComponent implements OnInit {
   }
 
   get temasArr() : FormArray {
-    return this.fBasicInfo.get('temaExt') as FormArray;
+    return this.fBasicInfo.get('tema_estrategico') as FormArray;
   }
   addInputTemas() {
     this.temasArr.push(this.temasgroup());
@@ -124,7 +145,7 @@ export class FEvalucionPropuestaComponent implements OnInit {
   }
 
   get objEstrategicosArr() : FormArray {
-    return this.fBasicInfo.get('objEspDesarrollo') as FormArray;
+    return this.fBasicInfo.get('objetivo_estrategico_desarrollo') as FormArray;
   }
 
   addInputObjEstrategicos() {
@@ -151,49 +172,49 @@ export class FEvalucionPropuestaComponent implements OnInit {
   }
 
 // Acciones Estrategicas
-  accEstrategicasgroup() {
+  acciones_estrategicasgroup() {
     return this.fb.group({
       accion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
   }
 
 
-  get accEstrategicasArr() : FormArray {
-    return this.fBasicInfo.get('accEstrategicas') as FormArray;
+  get acciones_estrategicasArr() : FormArray {
+    return this.fBasicInfo.get('acciones_estrategicas') as FormArray;
   }
-  addInputaccEstrategicas() {
-    this.accEstrategicasArr.push(this.accEstrategicasgroup());
+  addInputacciones_estrategicas() {
+    this.acciones_estrategicasArr.push(this.acciones_estrategicasgroup());
   }
 
 
   // Objetivo Estrategico Institucional
-  objEstrInstitucionalgroup() {
+  objetivo_estrategico_institucionalgroup() {
     return this.fb.group({
       objetivo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
   }
 
-  get objEstrInstitucionalArr() : FormArray {
-    return this.fBasicInfo.get('objEstrInstitucional') as FormArray;
+  get objetivo_estrategico_institucionalArr() : FormArray {
+    return this.fBasicInfo.get('objetivo_estrategico_institucional') as FormArray;
   }
 
-  addInputObjEstrInstitucional() {
-    this.objEstrInstitucionalArr.push(this.objEstrInstitucionalgroup());
+  objetivo_estrategico_institucional() {
+    this.objetivo_estrategico_institucionalArr.push(this.objetivo_estrategico_institucionalgroup());
   }
 
-  // Indicadores
-  indicadoresgroup() {
+  // Indicador
+  indicadorgroup() {
     return this.fb.group({
       indicador: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
   }
 
-  get indicadoresArr() : FormArray {
-    return this.fBasicInfo.get('indicadores') as FormArray;
+  get indicadorArr() : FormArray {
+    return this.fBasicInfo.get('indicador') as FormArray;
   }
 
-  addInputIndicadores() {
-    this.indicadoresArr.push(this.indicadoresgroup());
+  addInputIndicador() {
+    this.indicadorArr.push(this.indicadorgroup());
   }
 
 

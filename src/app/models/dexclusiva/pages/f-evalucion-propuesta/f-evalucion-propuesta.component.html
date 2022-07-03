@@ -6,14 +6,6 @@
             Formulario solicitud dedicación exclusiva
         </h3>
 
-        <h5>Información de la unidad académica</h5>
-        <div class="formFloatig">
-            <select class="form-select form-select-lg mb-3" id="floatingUnidadAcademica"
-                formControlName="unidadAcademica" required [ngClass]="{'is-invalid': isInvalidForm('unidadAcademica')}">
-                <option [value]="unidad" *ngFor="let unidad of unidades">{{unidad}}</option>
-            </select>
-            <label for="floatingUnidadAcademica">Unidad académica</label>
-        </div>
         <h5>Datos del profesor solicitante</h5>
         <div class="alert alert-info">
             <p>
@@ -45,20 +37,20 @@
         </div>
 
         <div class="formfloatig">
-            <input id="floatingExt" placeholder=" " formControlName="nExtOffice" class="form-control">
+            <input id="floatingExt" placeholder=" " formControlName="extension_oficina" class="form-control">
             <label for="floatingExt" class="formLabel">Número de extención oficina</label>
         </div>
 
         <div class="formfloatig">
-            <input id="floatingtCel" formControlName="tCel" class="form-control" type="number" placeholder=" "
-                [ngClass]="{'is-invalid': fBasicInfo.controls['tCel'].invalid }">
-            <label for="floatingtCel" class="formLabel">Número de teléfono célular</label>
+            <input id="floatingcelular" formControlName="celular" class="form-control" type="number" placeholder=" "
+                [ngClass]="{'is-invalid': fBasicInfo.controls['celular'].invalid }">
+            <label for="floatingcelular" class="formLabel">Número de teléfono célular</label>
         </div>
 
         <div class="formfloatig">
-            <input id="floatingEmail" formControlName="email" class="form-control" type="email" placeholder=" "
+            <input id="floatingemail" formControlName="email" class="form-control" type="email" placeholder=" "
                 [ngClass]="{'is-invalid': isInvalidForm('email')}" required>
-            <label for="floatingEmail" class="formLabel">Correo Institucional
+            <label for="floatingemail" class="formLabel">Correo Institucional
             </label>
         </div>
         <hr>
@@ -78,8 +70,8 @@
         <div class="row">
             <div class="col-md-6 col-xs-12 col-sm-12">
                 <div class="formfloatig">
-                    <input id="floatingTiempo" formControlName="tiempoSol" class="form-control" type="number"
-                        placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('tiempoSol')}" required>
+                    <input id="floatingTiempo" formControlName="tiempo_solicitado" class="form-control" type="number"
+                        placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('tiempo_solicitado')}" required>
                     <label for="floatingTiempo" class="formLabel">Tiempo solicitado
                     </label>
                 </div>
@@ -87,11 +79,11 @@
 
             <div class="col-md-6 col-xs-12 col-sm-12">
                 <div class="formfloatig">
-                    <select class="form-select form-select-lg mb-3" id="floatingcampo" formControlName="campo" required
-                        [ngClass]="{'is-invalid': isInvalidForm('campo')}" placeholder=" ">
-                        <option [value]="campo" *ngFor="let campo of campos">{{campo}}</option>
+                    <select class="form-select form-select-lg mb-3" id="floatingcampo_modalidad" formControlName="campo_modalidad" required
+                        [ngClass]="{'is-invalid': isInvalidForm('campo_modalidad')}" placeholder=" ">
+                        <option [value]="campo_modalidad" *ngFor="let campo_modalidad of campos">{{campo_modalidad}}</option>
                     </select>
-                    <label for="floatingcampo" class="selectLabel" [ngClass]="{'isFill': fBasicInfo.controls['campo'].valid}">Campo o modalidad</label>
+                    <label for="floatingcampo_modalidad" class="selectLabel" [ngClass]="{'isFill': fBasicInfo.controls['campo_modalidad'].valid}">Campo o modalidad</label>
                 </div>
             </div>
         </div>
@@ -99,14 +91,14 @@
         <h5>Documento comprobante de inscripción en  el Sistema Universitario de Investigación (acta, contrato u otro):</h5>
         <div class="alert alert-danger">
             <p>
-                Indicaciones sobre este campo importante!
+                Indicaciones sobre este campo_modalidad importante!
                 Lo puse no requerido por ahora!!!
             </p>
         </div>
 
         <div class="formfloatig">
-            <textarea id="floatingComprobante" formControlName="descComprobante" class="form-control"
-                placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('descComprobante')}" rows="5">
+            <textarea id="floatingComprobante" formControlName="descripcion_comprobante" class="form-control"
+                placeholder=" " [ngClass]="{'is-invalid': isInvalidForm('descripcion_comprobante')}" rows="5">
             </textarea>
             <label for="floatingComprobante" class="formLabel">Comprobante de inscripción
             </label>
@@ -115,7 +107,7 @@
         <hr>
         <h5>Apoya al plan de Desarrollo Institucional Vigente en:</h5>
         <h6>Temas:</h6>
-        <div style="width: 100%;" formArrayName="temaExt">
+        <div style="width: 100%;" formArrayName="tema_estrategico">
 
             <div *ngFor="let tema of temasArr.controls; last as isLast; let i=index" class="arrayLike formfloatig"
                 [formGroupName]="i">
@@ -123,7 +115,7 @@
                     [ngClass]="{'is-invalid': tema.invalid && tema.touched}"></textarea>
                 <label for="floatingTema{{i}}" class="formLabel">Tema {{i+1}}</label>
                 <div class="buttons">
-                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('temaExt',i)"
+                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('tema_estrategico',i)"
                         *ngIf="temasArr.length > 1">
                         <i class="fa fa-minus"></i>
 
@@ -138,16 +130,16 @@
 
         </div>
 
-        <h6>Objetivo(s) estratégico(s):</h6>
-        <div style="width: 100%;" formArrayName="objEspDesarrollo">
+        <h6>Objetivo(s) estratégico(s) de desarrollo:</h6>
+        <div style="width: 100%;" formArrayName="objetivo_estrategico_desarrollo">
 
             <div *ngFor="let objEstrategico of objEstrategicosArr.controls; last as isLast; let i=index" class="arrayLike formfloatig"
                 [formGroupName]="i">
-                <textarea id="floatingobjEspDesarrollo{{i}}" formControlName="objEstrategico" class="form-control" type="text" placeholder=" "
+                <textarea id="floatingobjetivo_estrategico_desarrollo{{i}}" formControlName="objEstrategico" class="form-control" type="text" placeholder=" "
                     [ngClass]="{'is-invalid': objEstrategico.invalid && objEstrategico.touched}"></textarea>
-                <label for="floatingobjEspDesarrollo{{i}}" class="formLabel">Objetivo estratégico de desarrollo {{i+1}}</label>
+                <label for="floatingobjetivo_estrategico_desarrollo{{i}}" class="formLabel">Objetivo {{i+1}}</label>
                 <div class="buttons">
-                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('objEspDesarrollo',i)"
+                    <button class="btn btn-circle btn-danger btn-sm" type="button" (click)="removeInput('objetivo_estrategico_desarrollo',i)"
                         *ngIf="objEstrategicosArr.length > 1">
                         <i class="fa fa-minus"></i>
 
@@ -187,20 +179,20 @@
 
         </div>
         <h6>Accion(es) Estratégica(s):</h6>
-        <div style="width: 100%" formArrayName="accEstrategicas">
+        <div style="width: 100%" formArrayName="acciones_estrategicas">
             
-            <div *ngFor="let accion of accEstrategicasArr.controls; last as isLast; let i=index"
+            <div *ngFor="let accion of acciones_estrategicasArr.controls; last as isLast; let i=index"
                 class="arrayLike formfloatig" [formGroupName]="i">
-                <textarea id="floatingaccEstrategicas{{i}}" formControlName="accion" class="form-control"
+                <textarea id="floatingacciones_estrategicas{{i}}" formControlName="accion" class="form-control"
                     type="text" placeholder=" " [ngClass]="{'is-invalid': accion.invalid && accion.touched}">
                 </textarea>
-                <label for="floatingaccEstrategicas{{i}}" class="formLabel">Acción estratégica {{i+1}}</label>
+                <label for="floatingacciones_estrategicas{{i}}" class="formLabel">Acción estratégica {{i+1}}</label>
                 <div class="buttons">
                     <button class="btn btn-circle btn-danger btn-sm" type="button"
-                        (click)="removeInput('accEstrategicas',i)" *ngIf="accEstrategicasArr.length > 1">
+                        (click)="removeInput('acciones_estrategicas',i)" *ngIf="acciones_estrategicasArr.length > 1">
                         <i class="fa fa-minus"></i>
                     </button>
-                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputaccEstrategicas()" *ngIf="isLast">
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputacciones_estrategicas()" *ngIf="isLast">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
@@ -211,20 +203,20 @@
         <hr>
         <h5>Apoya al plan de Acción Institucional Vigente en:</h5>
         <h6>Objetivo(s) extratégico(s) institucional(es):</h6>
-        <div style="width: 100%" formArrayName="objEstrInstitucional">
+        <div style="width: 100%" formArrayName="objetivo_estrategico_institucional">
             
-            <div *ngFor="let objetivo of objEstrInstitucionalArr.controls; last as isLast; let i=index"
+            <div *ngFor="let objetivo of objetivo_estrategico_institucionalArr.controls; last as isLast; let i=index"
                 class="arrayLike formfloatig" [formGroupName]="i">
-                <textarea id="floatingobjEstrInstitucional{{i}}" formControlName="objetivo" class="form-control"
+                <textarea id="floatingobjetivo_estrategico_institucional{{i}}" formControlName="objetivo" class="form-control"
                     type="text" placeholder=" " [ngClass]="{'is-invalid': objetivo.invalid && objetivo.touched}">
                 </textarea>
-                <label for="floatingobjEstrInstitucional{{i}}" class="formLabel">Objetivo estratégico institucional {{i+1}}</label>
+                <label for="floatingobjetivo_estrategico_institucional{{i}}" class="formLabel">Objetivo {{i+1}}</label>
                 <div class="buttons">
                     <button class="btn btn-circle btn-danger btn-sm" type="button"
-                        (click)="removeInput('objEstrInstitucional',i)" *ngIf="objEstrInstitucionalArr.length > 1">
+                        (click)="removeInput('objetivo_estrategico_institucional',i)" *ngIf="objetivo_estrategico_institucionalArr.length > 1">
                         <i class="fa fa-minus"></i>
                     </button>
-                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputObjEstrInstitucional()" *ngIf="isLast">
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="objetivo_estrategico_institucional()" *ngIf="isLast">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
@@ -233,20 +225,20 @@
         
         </div>
         <h6>Indicador(es):</h6>
-        <div style="width: 100%" formArrayName="indicadores">
+        <div style="width: 100%" formArrayName="indicador">
             
-            <div *ngFor="let indicador of indicadoresArr.controls; last as isLast; let i=index"
+            <div *ngFor="let indicador of indicadorArr.controls; last as isLast; let i=index"
                 class="arrayLike formfloatig" [formGroupName]="i">
-                <textarea id="floatingindicadores{{i}}" formControlName="indicador" class="form-control"
+                <textarea id="floatingindicador{{i}}" formControlName="indicador" class="form-control"
                     type="text" placeholder=" " [ngClass]="{'is-invalid': indicador.invalid && indicador.touched}">
                 </textarea>
-                <label for="floatingindicadores{{i}}" class="formLabel">Indicador {{i+1}}</label>
+                <label for="floatingindicador{{i}}" class="formLabel">Indicador {{i+1}}</label>
                 <div class="buttons">
                     <button class="btn btn-circle btn-danger btn-sm" type="button"
-                        (click)="removeInput('indicadores',i)" *ngIf="indicadoresArr.length > 1">
+                        (click)="removeInput('indicador',i)" *ngIf="indicadorArr.length > 1">
                         <i class="fa fa-minus"></i>
                     </button>
-                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputIndicadores()" *ngIf="isLast">
+                    <button class="btn btn-circle btn-primary btn-sm" type="button" (click)="addInputIndicador()" *ngIf="isLast">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
